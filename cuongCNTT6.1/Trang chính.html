@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+<!--
+body {
+	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+	background-color: #3E2345;
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+/* ~~ Element/tag selectors ~~ */
+ul, ol, dl { /* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+	padding-right: 15px;
+	padding-left: 15px; /* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box model math. A nested div with side padding can also be used as an alternate method. */
+}
+a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+	border: none;
+}
+
+/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+a:link {
+	color:#23423;
+	text-decoration: underline; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
+}
+a:visited {
+	color: #5E5435;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+	text-decoration: none;
+}
+
+/* ~~ this container surrounds all other divs giving them their percentage-based width ~~ */
+.container {
+	width: 80%;
+	max-width: 1260px;/* a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. */
+	min-width: 780px;/* a min-width may be desirable to keep this layout from getting too narrow. This keeps line length more readable in the side columns. IE6 does not respect this declaration. */
+	background-color: #MMM;
+	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
+}
+
+/* ~~ the header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo ~~ */
+.header {
+	background-color: #2F5D67;
+}
+
+/* ~~ These are the columns for the layout. ~~ 
+
+1) Padding is only placed on the top and/or bottom of the divs. The elements within these divs have padding on their sides. This saves you from any "box model math". Keep in mind, if you add any side padding or border to the div itself, it will be added to the width you define to create the *total* width. You may also choose to remove the padding on the element in the div and place a second div within it with no width and the padding necessary for your design.
+
+2) No margin has been given to the columns since they are all floated. If you must add margin, avoid placing it on the side you're floating toward (for example: a right margin on a div set to float right). Many times, padding can be used instead. For divs where this rule must be broken, you should add a "display:inline" declaration to the div's rule to tame a bug where some versions of Internet Explorer double the margin.
+
+3) Since classes can be used multiple times in a document (and an element can also have multiple classes applied), the columns have been assigned class names instead of IDs. For example, two sidebar divs could be stacked if necessary. These can very easily be changed to IDs if that's your preference, as long as you'll only be using them once per document.
+
+4) If you prefer your nav on the right instead of the left, simply float these columns the opposite direction (all right instead of all left) and they'll render in reverse order. There's no need to move the divs around in the HTML source.
+
+*/
+.sidebar1 {
+	float: left;
+	width: 20%;
+	background-color: #75A3C2;
+	padding-bottom: 10px;
+}
+.content {
+	padding: 10px 0;
+	width: 60%;
+	float: left;
+}
+.sidebar2 {
+	float: left;
+	width: 20%;
+	background-color: #65A4C2;
+	padding: 10px 0;
+}
+
+/* ~~ This grouped selector gives the lists in the .content area space ~~ */
+.content ul, .content ol { 
+	padding: 0 15px 15px 40px; /* this padding mirrors the right padding in the headings and paragraph rule above. Padding was placed on the bottom for space between other elements on the lists and on the left to create the indention. These may be adjusted as you wish. */
+}
+
+/* ~~ The navigation list styles (can be removed if you choose to use a premade flyout menu like Spry) ~~ */
+ul.nav {
+	list-style: none; /* this removes the list marker */
+	border-top: 1px solid #777; /* this creates the top border for the links - all others are placed using a bottom border on the LI */
+	margin-bottom: 15px; /* this creates the space between the navigation on the content below */
+}
+ul.nav li {
+	border-bottom: 1px solid #555; /* this creates the button separation */
+}
+ul.nav a, ul.nav a:visited { /* grouping these selectors makes sure that your links retain their button look even after being visited */
+	padding: 5px 5px 5px 15px;
+	display: block; /* this gives the link block properties causing it to fill the whole LI containing it. This causes the entire area to react to a mouse click. */
+	text-decoration: none;
+	background-color: #2060BC;
+	color: #000;
+}
+ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background and text color for both mouse and keyboard navigators */
+	background-color: F6F3D53;
+	color: #FFF;
+}
+
+/* ~~The footer ~~ */
+.footer {
+	padding: 10px 0;
+	background-color: #5F4D23;
+	position: relative;/* this gives IE6 hasLayout to properly clear */
+	clear: both; /* this clear property forces the .container to understand where the columns end and contain them */
+}
+
+/* ~~miscellaneous float/clear classes~~ */
+.fltrt {  /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page. The floated element must precede the element it should be next to on the page. */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* this class can be placed on a <br /> or empty div as the final element following the last floated div (within the #container) if the #footer is removed or taken out of the #container */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+-->
+</style><!--[if lte IE 7]>
+<style>
+.content { margin-right: -1px; } /* this 1px negative margin can be placed on any of the columns in this layout with the same corrective effect. */
+ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it needs to correct extra whiltespace between the links */
+</style>
+<![endif]-->
+</head>
+ss="container">
+lass="
+<body>
+
+<p><img src="1702022614.jpg" width="1380" height="331" /></p>
+
+<div>
+  <div class="header"><!-- end .header --></div>
+  <div class="sidebar1">
+    <ul class="nav">
+      <li><a href="Ăn uống.html">Ăn uống</a><a href="#"></a></li>
+      <li><a href="Chổ nghỉ.html">Chỗ nghỉ</a><a href="#"></a></li>
+      <li><a href="Khu vui chơi.html">Khu vui chơi</a><a href="#"></a></li>
+      <li><a href="Khu tắm biển.html">Khu tắm biển</a><a href="#"></a></li>
+      <li><a href="Khu di tích.html">Khu di tích</a><a href="#"></a></li>
+      <li><a href="Các tiết mục văn hóa.html">Các tiết mục văn hóa</a><a href="#"></a></li>
+      <li><a href="Du lịch thuyền rồng.html">Du lịch thuyền rồng</a><a href="#"></a></li>
+      <li><a href="Ngắm cảnh thành phố Huế.html">Ngắm cảnh thành phố Huế</a><a href="#"></a></li>
+      <li><a href="Đi bộ sông hương.html">Đi bộ sông hương</a><a href="#"></a></li>
+      <li><a href="Buổi chiều hoàng hôn ở huế.html">Buổi chiều hoàng hôn ở huế</a></li>
+    </ul>
+    <p class="header">Huế là vùng đất cố đô với vẻ đẹp trầm lắng cùng nhiều di sản văn hóa, lịch sử phong phú, lâu đời. Hành trình du lịch Huế 1 ngày là một chuyến đi+ lý tưởng và đầy thú vị khi bạn có thể trải nghiệm một lịch trình đa dạng từ danh lam thắng cảnh nổi tiếng đến những món ăn đậm chất Huế. Traveloka sẽ hướng dẫn chi tiết về kinh nghiệm và lịch trình du lịch Huế 1 ngày để bạn có thể tận hưởng chuyến đi trọn vẹn nhất ngay trong bài viết dưới đây!</p>
+    <div id="hu-mi-n-n-o">
+      <h2 class="nav" dir="auto" aria-level="2" role="heading">Huế ở miền nào?</h2>
+    </div>
+    <div>
+      <div dir="auto">
+        <p><a target="_blank" rel="noreferrer noopener" href="https://www.traveloka.com/vi-vn/destination/area/thua-thien-hue-province-10010312?funnel_source=content_article&amp;funnel_id=WP_446594">Huế</a> nằm ở miền Trung Việt Nam, là nơi giao thoa văn hóa giữa hai miền Bắc và Nam, nổi bật với bề dày lịch sử lâu đời và vẻ đẹp cổ kính, bình dị. Đây không chỉ là nơi lưu giữ những di sản lịch sử quan trọng mà còn mang trong mình nét văn hóa cung đình đặc sắc và tinh tế của triều Nguyễn, làm nên vẻ đẹp độc đáo và đầy sức hút.</p>
+      </div>
+    </div>
+    <div>
+      <div dir="auto">
+        <p>Ngoài giá trị về văn hóa, Huế còn nổi bật bởi thiên nhiên trữ tình và cảnh quan hùng vĩ, bao gồm những dòng sông thơ mộng, những đồi núi xanh ngát và bờ biển xanh trong. Cảnh sắc nơi đây thay đổi theo từng mùa, tạo nên sự đa dạng về trải nghiệm cho du khách. Tất cả góp phần tạo nên một hành trình du lịch Huế 1 ngày đầy sắc màu và kỷ niệm khó quên.</p>
+      </div>
+    </div>
+    <br />
+    
+  <!-- end .sidebar1 --></div>
+  <div class="content">
+    <h1 data-v-715431e7="" data-v-15d5e8aa="">34 Địa Điểm Du Lịch Huế Nổi Tiếng Cho Hội Tự Túc</h1>
+    <h1></h1>
+    <div data-v-15d5e8aa=""><em data-v-15d5e8aa=""><strong data-v-15d5e8aa="">Cùng khám phá những địa điểm du lịch Huế nổi tiếng để hành trình trải nghiệm văn hoá, lịch sử ở cố đô thêm phần màu sắc. </strong></em></div>
+    <div data-v-15d5e8aa="">Dường như mỗi thành phố của Việt Nam đều có thể làm du lịch, bởi mỗi nơi đều có bức tranh thiên nhiên rất riêng, cùng vớ văn hóa, lịch sử đặc sắc. <a target="_blank" href="https://www.klook.com/vi/city/35-hue-things-to-do/" rel="noopener" data-spm-module="InArticleHyperlinkWord?ext={'LinkURL':'https%3A%2F%2Fwww.klook.com%2Fvi%2Fcity%2F35-hue-things-to-do%2F'}" data-v-15d5e8aa=""><span data-spm-item="__default?typ=entry" data-v-15d5e8aa="">Huế</span></a> là một điển hình. Mảnh đất này dù đã trải qua biết bao thăng trầm của thời gian và biến động của đất nước, vẫn giữ nguyên vẻ cổ kính, dịu dàng, trang nghiêm.</div>
+    <div data-v-15d5e8aa="">Thế nhưng, Huế không chỉ có những di tích thời hoàng kim mà còn sở hữu muôn vàn cảnh đẹp giao hòa giữa đèo, mây, sông, núi. Hãy cùng #teamKlook trở lại cố đô và khám phá xem Huế có những địa điểm du lịch thú vị nào nhé.</div>
+    <p>.</p>
+    <h3 data-v-15d5e8aa=""><strong data-v-15d5e8aa="">Các Hoạt Động Du Lịch Huế Bán Chạy Trên Klook</strong></h3>
+    <div data-v-15d5e8aa="">Bạn sắp đi <a target="_blank" href="https://www.klook.com/vi/blog/dia-diem-du-lich-hue/" rel="noopener" data-spm-module="InArticleHyperlinkWord?ext={'LinkURL':'https%3A%2F%2Fwww.klook.com%2Fvi%2Fblog%2Fdia-diem-du-lich-hue%2F'}" data-v-15d5e8aa=""><span data-spm-item="__default?typ=entry" data-v-15d5e8aa="">du lịch Huế</span></a>? Để Klook mách bạn các hoạt động và dịch vụ du lịch bán chạy, hứa hẹn mang đến chuyến đi ưng ý nhé.</div>
+    <h3 data-v-15d5e8aa=""><strong data-v-15d5e8aa="">Các Tiện Ích Cần Thiết Khi Đi Du Lịch Huế</strong></h3>
+    <h2>Vé nghe ca nhạc Huế</h2>
+    <p>_Vé thuê xe máy ở Huế </p>
+    <p>_Vé tàu hỏa Huế đến Đà Nẵng</p>
+    <p>_Vé xe buýt hai tầng ở Huế</p>
+    <p>_Vé thăm các khu di tích lịch sử</p>
+    <p>_vé tham quan các Lăng tẩm ở Huế</p>
+    <p>_.....</p>
+    <h2 id="n1e77e45f" data-v-15d5e8aa=""><strong data-v-15d5e8aa="">Các Địa Điểm Du Lịch Huế Nổi Tiếng Không Nên Bỏ Lỡ</strong></h2>
+    <h2 id="n-5a930024" data-v-15d5e8aa=""><strong data-v-15d5e8aa="">1. Đại Nội Huế</strong></h2>
+    <h3>&nbsp;</h3>
+    <div data-v-15d5e8aa="">Nhắc đến quần thể di tích cố đô Huế, bạn không thể bỏ qua Đại Nội, một dấu ấn văn hóa lịch sử độc đáo thuộc quần thể di tích cố đô Huế. Đại Nội là khu vực bao gồm Hoàng Thành và Tử Cấm Thành với hơn 100 công trình kiến trúc được xây dựng từ thời vua nhà Nguyễn, chứng kiến bao thăng trầm của các triều đại phong kiến Việt Nam, và đã được tổ chức UNESCO công nhận là di sản văn hóa thế giới gần 30 năm trước.</div>
+    <h3 data-v-15d5e8aa=""><strong data-v-15d5e8aa="">Đại Nội Huế</strong></h3>
+    <ul data-v-15d5e8aa="">
+      <li data-v-15d5e8aa="">
+        <div data-v-15d5e8aa="">Địa chỉ: Thành phố Huế, tỉnh Thừa Thiên Huế</div>
+      </li>
+    </ul>
+    <h2 id="na76bcae" data-v-15d5e8aa=""><strong data-v-15d5e8aa="">2. Cây Ngô Đồng Phim Mắt Biếc</strong></h2>
+    <a target="_blank" href="https://www.klook.com/vi/city/35-hue-things-to-do/" data-spm-module="PictureWithLink?ext={'LinkURL':'https://www.klook.com/vi/city/35-hue-things-to-do/','PictureUrl':'https://res.klook.com/image/upload/v1689063625/txvxpmq81uiddiopu7i6.jpg'}" data-spm-virtual-item="__virtual" data-v-15d5e8aa="">
+    <div>
+      <div></div>
+      <div>
+        <div data-v-15d5e8aa="">Nếu đã trót đắm say những thước phim đậm chất thơ của bộ phim Mắt Biếc, thì có lẽ hình ảnh cây ngô đồng đã không còn quá xa lạ gì với những mọt phim đúng không nhỉ?</div>
+        <div data-v-15d5e8aa="">Nằm giữa cánh đồng rộng lớn ở làng Hà Cảng, xã Quảng Phú, huyện Quảng Điền, tỉnh Thừa Thiên Huế, cây ngô đồng cổ thụ ở &quot;làng Đo Đo&quot; đã trở thành hình ảnh thân quen trong lòng mỗi người dân địa phương.</div>
+      </div>
+    </div>
+    </a>
+    <p><a target="_blank" href="https://www.klook.com/vi/city/35-hue-things-to-do/" data-spm-module="PictureWithLink?ext={'LinkURL':'https://www.klook.com/vi/city/35-hue-things-to-do/','PictureUrl':'https://res.klook.com/image/upload/v1689063625/txvxpmq81uiddiopu7i6.jpg'}" data-spm-virtual-item="__virtual" data-v-15d5e8aa="">      </a><br />
+      <strong data-v-15d5e8aa="">3. Sông Bạch Đằng</strong> </p>
+    <div data-v-15d5e8aa="">Mỗi thành phố đều có một dòng sông gắn liền như linh hồn của nơi đó. <a target="_blank" href="https://www.klook.com/vi/activity/36112-traditional-singing-performance-huong-river-ticket-hue/" rel="noopener" data-spm-module="InArticleHyperlinkWord?ext={'LinkURL':'https%3A%2F%2Fwww.klook.com%2Fvi%2Factivity%2F36112-traditional-singing-performance-huong-river-ticket-hue%2F'}" data-v-15d5e8aa=""><span data-spm-item="__default?typ=entry" data-v-15d5e8aa="">Sông Hương</span></a> cũng vậy. Đây là dòng sông đã đi vào lịch sử, thi ca, đi vào lòng mỗi người dân Huế. Với chiều dài khoảng 80km, <a target="_blank" href="https://www.klook.com/vi/activity/1607-perfume-river-dinner-cruise-hue/" rel="noopener" data-spm-module="InArticleHyperlinkWord?ext={'LinkURL':'https%3A%2F%2Fwww.klook.com%2Fvi%2Factivity%2F1607-perfume-river-dinner-cruise-hue%2F'}" data-v-15d5e8aa=""><span data-spm-item="__default?typ=entry" data-v-15d5e8aa="">dòng Hương Giang</span></a> chảy qua rất nhiều địa điểm nổi tiếng của trung tâm thành phố Huế, bao lấy quần thể di tích cố đô, làm tăng thêm vẻ đẹp uy nghiêm, cổ kính của các công trình ấy.</div>
+    <h2 id="n407ffac2" data-v-15d5e8aa=""><strong data-v-15d5e8aa="">4. Cầu Rồng Huế</strong></h2>
+    <div>
+      <div><a target="_blank" href="https://www.klook.com/vi/city/35-hue-things-to-do/" data-spm-module="PictureWithLink?ext={'LinkURL':'https://www.klook.com/vi/city/35-hue-things-to-do/','PictureUrl':'https://res.klook.com/image/upload/v1622012473/blog/nvhy6sl21heody7mxfcl.jpg'}" data-spm-virtual-item="__virtual" data-v-15d5e8aa=""></a></div>
+      <div></div>
+    </div>
+    <p>Cầu Trường Tiền sáu vài, mười hai nhịp&rdquo; là cây cầu soi bóng xuống sông Hương suốt hơn một thế kỷ qua. Theo sử sách, cầu Trường Tiền đã trải qua không ít lần đổi tên, tàn phá bởi chiến tranh, xây dựng, rồi trùng tu, và vẫn tồn tại như biểu tượng của thời gian, không thể gục ngã hay thay thế được. Từ Festival Huế năm 2002, cầu Trường Tiền được lắp đặt hệ thống đèn đổi màu hiện đại, làm khúc sông thêm rực sáng và thu hút du lịch hơn.</p>
+    <h2 id="n-23ca9e9d" data-v-15d5e8aa=""><strong data-v-15d5e8aa="">5. Bánh Canh Nam Phổ</strong></h2>
+    <p data-v-15d5e8aa=""><strong>....</strong></p>
+    <div>
+      <div><a target="_blank" href="https://www.klook.com/vi/city/35-hue-things-to-do/" data-spm-module="PictureWithLink?ext={'LinkURL':'https://www.klook.com/vi/city/35-hue-things-to-do/','PictureUrl':'https://res.klook.com/image/upload/v1689063583/mxahwnif3gyflp6hy8qs.jpg'}" data-spm-virtual-item="__virtual" data-v-15d5e8aa=""></a></div>
+      <div></div>
+    </div>
+    <br />
+    <p><br />
+    <img src="../VDINH/IMAGE/du-lich-thua-thien-hue-cam-nang-du-lich-va-18-dia-diem-dep-hap-dan-202308231445179171.jpg" width="512" height="325" /> </p>
+    <h3 data-v-15d5e8aa="">&nbsp;</h3>
+    <p>&nbsp;</p>
+  <!-- end .content --></div>
+  <div class="sidebar2">
+    <h4>Ảnh</h4>
+    <img src="../VDINH/IMAGE/1702022614.jpg" width="231" height="300" />
+<h1 data-role="title">'Bỏ túi' những điểm du lịch hấp dẫn khi đến Huế</h1>
+    <p>&nbsp;</p>
+    <!-- end .sidebar2 --></div>
+  <div class="footer">
+    <p>Tìm hiểu thêm...</p>
+    <div id="th-i-ti-t-t-i-hu">
+      <h2 aria-level="2" dir="auto" role="heading">Thời tiết tại Huế</h2>
+    </div>
+    <div>
+      <div dir="auto">
+        <p>Thời tiết ở Huế mang tính chất nhiệt đới gió mùa, chia làm hai mùa rõ rệt: mùa khô và mùa mưa.</p>
+      </div>
+    </div>
+    <div>
+      <div>
+        <div>
+          <div></div>
+        </div>
+        <div>
+          <div dir="auto"><strong>Mùa khô kéo dài từ tháng 3 đến tháng 8</strong>: Vào thời gian này nhiệt độ tại Huế sẽ tương đối cao, đôi khi lên đến 35 - 40 độ C, đặc biệt nóng rát vào tháng 6 và tháng 7 khi Huế chịu ảnh hưởng của gió Lào khô hanh.</div>
+        </div>
+      </div>
+      <div>
+        <div>
+          <div></div>
+        </div>
+        <div>
+          <div dir="auto"><strong>Mùa mưa ở Huế kéo dài từ tháng 9 đến tháng 2 năm sau</strong>: Đặc điểm thời tiết lúc này tương đối mưa nhiều, có thể kéo dài liên tục, và nhiệt độ giảm xuống, dao động từ 18 - 24 độ C. Vào tháng 10 và 11, Huế thường chịu ảnh hưởng của bão và áp thấp nhiệt đới, gây ra mưa lớn và lũ lụt.</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div dir="auto">
+        <p>Thời điểm lý tưởng nhất để trải nghiệm <a target="_blank" rel="noreferrer noopener" href="https://www.traveloka.com/vi-vn/activities/vietnam/region/thua-thien-hue-province-10010312?funnel_source=content_article&amp;funnel_id=WP_446594">du lịch Huế</a> là từ tháng 1 đến tháng 4 trong năm. Lúc này, thời tiết mát mẻ, ít mưa, rất thích hợp cho việc tham quan các di tích, thưởng thức cảnh đẹp và khám phá ẩm thực địa phương.</p>
+      </div>
+    </div>
+    <div>
+      <div dir="auto">
+        <p>Khoảng tháng 3 - 4 cũng là thời gian diễn ra Festival Huế (tổ chức 2 năm một lần) với nhiều hoạt động nghệ thuật, lễ hội đặc sắc, mang đến trải nghiệm phong phú về văn hóa, nghệ thuật của xứ Huế.</p>
+      </div>
+    </div>
+    <!-- end .footer --></div>
+  <!-- end .container --></div>
+</body>
+</html>

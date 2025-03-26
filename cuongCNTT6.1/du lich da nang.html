@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+<!--
+body {
+	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+	background-color: #4E5869;
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+/* ~~ Element/tag selectors ~~ */
+ul, ol, dl { /* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+	padding-right: 15px;
+	padding-left: 15px; /* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box model math. A nested div with side padding can also be used as an alternate method. */
+}
+a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+	border: none;
+}
+
+/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+a:link {
+	color:#414958;
+	text-decoration: underline; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
+}
+a:visited {
+	color: #4E5869;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+	text-decoration: none;
+}
+
+/* ~~ this container surrounds all other divs giving them their percentage-based width ~~ */
+.container {
+	width: 80%;
+	max-width: 1260px;/* a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. */
+	min-width: 780px;/* a min-width may be desirable to keep this layout from getting too narrow. This keeps line length more readable in the side columns. IE6 does not respect this declaration. */
+	background-color: #FFF;
+	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
+}
+
+/* ~~ the header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo ~~ */
+.header {
+	background-color: #6F7D94;
+}
+
+/* ~~ These are the columns for the layout. ~~ 
+
+1) Padding is only placed on the top and/or bottom of the divs. The elements within these divs have padding on their sides. This saves you from any "box model math". Keep in mind, if you add any side padding or border to the div itself, it will be added to the width you define to create the *total* width. You may also choose to remove the padding on the element in the div and place a second div within it with no width and the padding necessary for your design.
+
+2) No margin has been given to the columns since they are all floated. If you must add margin, avoid placing it on the side you're floating toward (for example: a right margin on a div set to float right). Many times, padding can be used instead. For divs where this rule must be broken, you should add a "display:inline" declaration to the div's rule to tame a bug where some versions of Internet Explorer double the margin.
+
+3) Since classes can be used multiple times in a document (and an element can also have multiple classes applied), the columns have been assigned class names instead of IDs. For example, two sidebar divs could be stacked if necessary. These can very easily be changed to IDs if that's your preference, as long as you'll only be using them once per document.
+
+4) If you prefer your nav on the right instead of the left, simply float these columns the opposite direction (all right instead of all left) and they'll render in reverse order. There's no need to move the divs around in the HTML source.
+
+*/
+.sidebar1 {
+	float: left;
+	width: 20%;
+	background-color: #93A5C4;
+	padding-bottom: 10px;
+}
+.content {
+	padding: 10px 0;
+	width: 60%;
+	float: left;
+}
+.sidebar2 {
+	float: left;
+	width: 20%;
+	background-color: #93A5C4;
+	padding: 10px 0;
+}
+
+/* ~~ This grouped selector gives the lists in the .content area space ~~ */
+.content ul, .content ol { 
+	padding: 0 15px 15px 40px; /* this padding mirrors the right padding in the headings and paragraph rule above. Padding was placed on the bottom for space between other elements on the lists and on the left to create the indention. These may be adjusted as you wish. */
+}
+
+/* ~~ The navigation list styles (can be removed if you choose to use a premade flyout menu like Spry) ~~ */
+ul.nav {
+	list-style: none; /* this removes the list marker */
+	border-top: 1px solid #666; /* this creates the top border for the links - all others are placed using a bottom border on the LI */
+	margin-bottom: 15px; /* this creates the space between the navigation on the content below */
+}
+ul.nav li {
+	border-bottom: 1px solid #666; /* this creates the button separation */
+}
+ul.nav a, ul.nav a:visited { /* grouping these selectors makes sure that your links retain their button look even after being visited */
+	padding: 5px 5px 5px 15px;
+	display: block; /* this gives the link block properties causing it to fill the whole LI containing it. This causes the entire area to react to a mouse click. */
+	text-decoration: none;
+	background-color: #8090AB;
+	color: #000;
+}
+ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background and text color for both mouse and keyboard navigators */
+	background-color: #6F7D94;
+	color: #FFF;
+}
+
+/* ~~The footer ~~ */
+.footer {
+	padding: 10px 0;
+	background-color: #6F7D94;
+	position: relative;/* this gives IE6 hasLayout to properly clear */
+	clear: both; /* this clear property forces the .container to understand where the columns end and contain them */
+}
+
+/* ~~miscellaneous float/clear classes~~ */
+.fltrt {  /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page. The floated element must precede the element it should be next to on the page. */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* this class can be placed on a <br /> or empty div as the final element following the last floated div (within the #container) if the #footer is removed or taken out of the #container */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+-->
+</style><!--[if lte IE 7]>
+<style>
+.content { margin-right: -1px; } /* this 1px negative margin can be placed on any of the columns in this layout with the same corrective effect. */
+ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it needs to correct extra whiltespace between the links */
+</style>
+<![endif]--></head>
+
+<body>
+
+<div class="container">
+  <div class="header"><img src="Bà-Nà-2.jpg" width="811" height="314" /><!-- end .header --></div>
+  <div class="sidebar1">
+    <ul class="nav">
+      <li><a href="#">trang 1</a></li>
+      <li><a href="#">trang 2</a></li>
+      <li><a href="#">trang 3</a></li>
+      <li><a href="#">trang4</a></li>
+    </ul>
+    <p> rên đây là một số địa điểm du lịch Đà Nẵng bạn nên ghé khi có dịp du lịch đến thành phố xinh đẹp này. Và đừng quên chọn cho mình địa điểm nghỉ dưỡng lý tưởng cho chuyến đi thêm vẹn trọn nhé!.</p>
+    <p>Cùng ghé đến Thánh Địa Mỹ Sơn để tìm đến Vương Quốc Chăm Pa của nhiều thế kỷ trước và được chìm đắm vào không gian nghệ thuật - kiến trúc độc đáo.Trong khoảng 1 giờ di chuyển đến Mỹ Sơn, du khách sẽ được khám phá những điều mới mẻ mà nơi này mang lại. Thánh Địa Mỹ Sơn từng là nơi chôn cất, làm lễ cúng bái các vị vua và hoàng tộc Chăm Pa, được biết đến như một trong những trung tâm đền đài chính của Ấn Độ giáo ở khu vực Đông Nam Á. Có diện tích hạn chế nhưng sở hữu đến 7 phong cách nghệ thuật được chia thành 10 nhóm khác nhau; từ đây, du khách có thể mường tượng ra đời sống thường nhật và tín ngưỡng của người dân Chăm Pa trong thời kỳ phát triển huy hoàng nhất. Năm 1999, Thánh Địa Mỹ Sơn được UNESCO công nhận là Di Sản Văn Hoá Thế Giới..</p>
+    <!-- end .sidebar1 --></div>
+  <div class="content">
+    <h1 aria-level="1" dir="auto" role="heading">40+ địa điểm du lịch Đà Nẵng hấp dẫn cho bạn 2025</h1>
+    <p>Với những bãi biển xanh mát, những cánh rừng bạt ngàn, những cây cầu “độc nhất vô nhị”, những khu vui chơi giải trí đầy hấp dẫn… Đà Nẵng được ví như một “thiên đường” – nơi có thể đáp ứng mọi nhu cầu giải trí cho bất cứ ai, dù là với những vị khách khó tính nhất. Vì vậy, các địa điểm du lịch Đà Nẵng ngày càng thu hút đông đảo khách tham quan cả trong và ngoài nước. - <a href=http://www.adobe.com/go/adc_css_layouts</a>.</p>
+    <h2>Những địa điểm du lịch Đà Nẵng phổ biến bạn không thể bỏ lỡ</h2>
+    <p>Đà Nẵng là “thành phố du lịch” không chỉ nổi tiếng ở Việt Nam mà còn được yêu thích bởi bạn bè trên khắp năm châu. Nhắc tới Đà Nẵng, người ta không chỉ nghĩ ngay tới những người dân hiền lành và hiếu khách, những khách sạn tiện nghi và độc đáo hay những món ăn có vị ngon khó cưỡng, mà còn cả những địa điểm du lịch vô cùng hấp dẫn và thú vị.</p>
+    <h3>Địa điểm du lịch Đà Nẵng giàu văn hóa</h3>
+    <p> Chùa Linh Ứng Non Nước,Sơn Trà Tịnh Viên,Ghềnh Bàng,Nhất Lâm Thủy Trang Trà,Bảo tàng Đồng Đình,Chợ Hàn,..... </p>
+    <p> Trải nghiệm mới mẻ bạn không thể bỏ lỡ
+ Xã Hòa Bắc, Đà Nẵng
+Nếu bạn đang tìm kiếm các địa điểm du lịch Đà Nẵng mang cảm giác healing chữa lành, đem đến cho bạn nhiều trải nghiệm mới mẻ thì chắc chắn bận không thể bỏ qua khu vực Xã Hòa Bắc, Đà Nẵng.
+
+Xã Hòa Bắc là một địa điểm du lịch mới mẻ tại Đà Nẵng đang thu hút giới trẻ nhờ vào khung cảnh thiên nhiên hoang sơ, yên bình và không gian lý tưởng cho các hoạt động glamping (cắm trại sang trọng). Nơi đây nằm giữa hai con sông Cu Đê và Sông Nam, được bao bọc bởi núi rừng xanh mát, tạo nên bầu không khí trong lành, thoáng đãng. 
+
+Bạn có thể tìm thấy các khu glamping nằm gần nhau ở khu vực này như: Vườn nho thung lũng Nam Yên, Hoà Bắc Ecolodge - Camping Space Art,...hay các homestay gần suối mang đến trải nghiệm thư giãn giữa thiên nhiên với đầy đủ tiện nghi hiện đại.. </p>
+    <p>Tại đây, bạn có thể tận hưởng các hoạt động ngoài trời như chèo thuyền kayak, tắm suối, câu cá hoặc đơn giản chỉ là nằm trên ghế dài, đọc sách và hòa mình vào không gian thanh bình. Bên cạnh đó, bạn còn có cơ hội giao lưu với người dân địa phương, trải nghiệm văn hóa của các cộng đồng dân tộc như Cơ Tu và thưởng thức các món ăn truyền thống độc đáo.
+
+Hòa Bắc chính là điểm đến không thể bỏ qua nếu bạn muốn thoát khỏi nhịp sống hối hả của thành phố và tận hưởng những khoảnh khắc gần gũi với thiên nhiên. Đây cũng là nơi hoàn hảo để bạn chụp những bức ảnh sống ảo với khung cảnh xanh mướt, vừa tinh tế, vừa đầy cảm hứng!</p>
+    <h4>Địa điểm du lịch biển tuyệt đẹp ở Đà Nẵng</h4>
+    <p>Bãi biển Mỹ Khê,Bãi tắm Phạm Văn Đồng,Bãi đá đen,Bãi tắm Non Nước,Biển làng Vân, biển Nam Ô,Bãi Biển Tiên Sa,Bãi Nam,Mũi Nghê. </p>
+    <ol>
+      <li>Địa điểm du lịch Đà Nẵng: Những cây cầu đặc trưng của thành phố
+Nhắc tới Đà Nẵng, người ta thường nghĩ ngay tới những cây cầu độc đáo và kỳ lạ của “thành phố du lịch” này. Mỗi cây cầu đều có một nét đặc trưng riêng, ghi dấu trong lòng những du khách đã từng một lần đặt chân đến mảnh đất này..</li>
+      <li>Cầu sông Hàn
+Địa chỉ: An Hải Bắc, quận Hải Châu, TP. Đà Nẵng
+
+Là một trong các điểm du lịch Đà Nẵng không thể bỏ qua, cầu sông Hàn là một dạng cầu quay có cấu trúc vô cùng đặc biệt. 
+
+Hoàn thành vào năm 2000, cầu không chỉ đánh dấu sự phát triển vượt bậc của thành phố mà còn thể hiện ý chí mạnh mẽ và tinh thần đoàn kết của người dân Đà Nẵng khi được xây dựng từ nguồn vốn đóng góp của địa phương.</li>
+    </ol>
+  <!-- end .content --></div>
+  <div class="sidebar2">
+    <h4>Ảnh</h4>
+    <img src="Bà-Nà-2.jpg" width="160" height="130" />
+    <p>Đến với Bà Nà Hills bạn được ngắm nhìn cảnh quan thiên nhiên thơ mộng qua hệ thống cáp treo. Tại đây có 5 tuyến cáp treo để bạn lựa chọn. Địa điểm du lịch Đà Nẵng - Bà Nà Hills còn nhiều điểm vui chơi thú vị như: - Cầu Vàng: công trình từng được Tạp chí Time bình chọn là 1 trong 100 điểm đến hàng đầu thế giới - Công viên khủng long - Khu trưng bày tượng sáp - Khu hầm rượu Debay .</p>
+  <!-- end .sidebar2 --></div>
+  <div class="footer">
+    <p>tìm hiểu thêm.</p>
+    <!-- end .footer --></div>
+  <!-- end .container --></div>
+</body>
+</html>

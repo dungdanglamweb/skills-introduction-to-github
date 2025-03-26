@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+<!--
+body {
+	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+	background-color: #4E5869;
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+/* ~~ Element/tag selectors ~~ */
+ul, ol, dl { /* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+	padding-right: 15px;
+	padding-left: 15px; /* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box model math. A nested div with side padding can also be used as an alternate method. */
+}
+a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+	border: none;
+}
+
+/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+a:link {
+	color:#414958;
+	text-decoration: underline; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
+}
+a:visited {
+	color: #4E5869;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+	text-decoration: none;
+}
+
+/* ~~ this container surrounds all other divs giving them their percentage-based width ~~ */
+.container {
+	width: 80%;
+	max-width: 1260px;/* a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. */
+	min-width: 780px;/* a min-width may be desirable to keep this layout from getting too narrow. This keeps line length more readable in the side columns. IE6 does not respect this declaration. */
+	background-color: #FFF;
+	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
+}
+
+/* ~~ the header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo ~~ */
+.header {
+	background-color: #6F7D94;
+}
+
+/* ~~ These are the columns for the layout. ~~ 
+
+1) Padding is only placed on the top and/or bottom of the divs. The elements within these divs have padding on their sides. This saves you from any "box model math". Keep in mind, if you add any side padding or border to the div itself, it will be added to the width you define to create the *total* width. You may also choose to remove the padding on the element in the div and place a second div within it with no width and the padding necessary for your design.
+
+2) No margin has been given to the columns since they are all floated. If you must add margin, avoid placing it on the side you're floating toward (for example: a right margin on a div set to float right). Many times, padding can be used instead. For divs where this rule must be broken, you should add a "display:inline" declaration to the div's rule to tame a bug where some versions of Internet Explorer double the margin.
+
+3) Since classes can be used multiple times in a document (and an element can also have multiple classes applied), the columns have been assigned class names instead of IDs. For example, two sidebar divs could be stacked if necessary. These can very easily be changed to IDs if that's your preference, as long as you'll only be using them once per document.
+
+4) If you prefer your nav on the right instead of the left, simply float these columns the opposite direction (all right instead of all left) and they'll render in reverse order. There's no need to move the divs around in the HTML source.
+
+*/
+.sidebar1 {
+	float: left;
+	width: 20%;
+	background-color: #93A5C4;
+	padding-bottom: 10px;
+}
+.content {
+	padding: 10px 0;
+	width: 60%;
+	float: left;
+}
+.sidebar2 {
+	float: left;
+	width: 20%;
+	background-color: #93A5C4;
+	padding: 10px 0;
+}
+
+/* ~~ This grouped selector gives the lists in the .content area space ~~ */
+.content ul, .content ol { 
+	padding: 0 15px 15px 40px; /* this padding mirrors the right padding in the headings and paragraph rule above. Padding was placed on the bottom for space between other elements on the lists and on the left to create the indention. These may be adjusted as you wish. */
+}
+
+/* ~~ The navigation list styles (can be removed if you choose to use a premade flyout menu like Spry) ~~ */
+ul.nav {
+	list-style: none; /* this removes the list marker */
+	border-top: 1px solid #666; /* this creates the top border for the links - all others are placed using a bottom border on the LI */
+	margin-bottom: 15px; /* this creates the space between the navigation on the content below */
+}
+ul.nav li {
+	border-bottom: 1px solid #666; /* this creates the button separation */
+}
+ul.nav a, ul.nav a:visited { /* grouping these selectors makes sure that your links retain their button look even after being visited */
+	padding: 5px 5px 5px 15px;
+	display: block; /* this gives the link block properties causing it to fill the whole LI containing it. This causes the entire area to react to a mouse click. */
+	text-decoration: none;
+	background-color: #8090AB;
+	color: #000;
+}
+ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background and text color for both mouse and keyboard navigators */
+	background-color: #6F7D94;
+	color: #FFF;
+}
+
+/* ~~The footer ~~ */
+.footer {
+	padding: 10px 0;
+	background-color: #6F7D94;
+	position: relative;/* this gives IE6 hasLayout to properly clear */
+	clear: both; /* this clear property forces the .container to understand where the columns end and contain them */
+}
+
+/* ~~miscellaneous float/clear classes~~ */
+.fltrt {  /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page. The floated element must precede the element it should be next to on the page. */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* this class can be placed on a <br /> or empty div as the final element following the last floated div (within the #container) if the #footer is removed or taken out of the #container */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+-->
+</style><!--[if lte IE 7]>
+<style>
+.content { margin-right: -1px; } /* this 1px negative margin can be placed on any of the columns in this layout with the same corrective effect. */
+ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it needs to correct extra whiltespace between the links */
+</style>
+<![endif]--></head>
+
+<body>
+
+<div class="container">
+  <div class="header"><img src="unnamed.jpg" width="814" height="341" /><!-- end .header --></div>
+  <div class="sidebar1">
+    <ul class="nav">
+      <li><a href="Giải Đua.html">Giải đua</a><a href="#"></a></li>
+      <li><a href="Chặng Đua.html">Chặng đua</a></li>
+      <li><a href="Lịch Đua.html">lịch Đua</a><a href="#"></a></li>
+      <li><a href="Các Đội Đua.html">Các đội Đua</a></li>
+    </ul>
+    <p> Thay mặt Ban tổ chức, ông Nguyễn Nam Nhân, Phó Giám đốc Sở Văn hóa và Thể thao Thành phố Hồ Chí Minh cho biết, Giải đua xe đạp phong trào là giải có chất lượng cao về chuyên môn, được tổ chức định kỳ hằng năm góp phần nâng cao trình độ chuyên môn các vận động viên đua xe đạp của Thành phố. Ban Tổ chức mong muốn, các đơn vị tham dự Giải đua xe đạp sẽ thi đấu hết mình để giành thành tích cao trên tinh thần thể thao trung thực và cao thượng để góp phần vào sự thành công của giải.</p>
+    <p>Kết quả chung cuộc, Ban tổ chức trao 18 giải Nhất, Nhì, Ba ở nội dung đồng đội tính giờ và cá nhân đường trường, đồng đội đường trường của hai nhóm tuổi 16-40 và 41-55 tuổi.
+Giải đua xe đạp phong trào nhằm tăng cường và tạo điều kiện cho các vận động viên bộ môn xe đạp thi đấu, giao lưu, học tập kinh nghiệm và nâng cao trình độ chuyên môn góp phần thúc đẩy phong trào tập luyện bộ môn xe đạp tại Thành phố Hồ Chí Minh. Giải đua xe đạp phong trào cũng là hoạt động chào mừng kỷ niệm 93 năm Ngày thành lập Đảng Cộng sản Việt Nam (3/2/1930-3/2/2023) và đón chào Tết Nguyên đán Quý Mão 2023.</p>
+  <!-- end .sidebar1 --></div>
+  <div class="content">
+    <h1>Họp Ban Tổ Chức Giải Đua Xe Đạp Cúp Truyền Hình Tp.HCM Lần 37 Năm 2025</h1>
+    <p>Cuộc đua xe đạp cúp truyền hình năm 2025 dự kiến sẽ khai mạc vào ngày 03/04 tại Tuyên Quang và tiếp tục xuyên suốt qua các tỉnh, thành phố lớn như Hà Nội, Hà Tĩnh, Đà Nẵng, TP. Hồ Chí Minh và kết thúc vào ngày 30/04. Cuộc đua sẽ thu hút khoảng 400 – 450 thành viên, bao gồm 150 VĐV từ 15 CLB xe, trong đó có cả 10 VĐV quốc tế. Các thành phần còn lại sẽ bao gồm trọng tài, lực lượng tiếp tế, y tế, cảnh sát và đội ngũ báo chí.
+
+Lộ trình các chặng đua cụ thể
+Cuộc đua sẽ bắt đầu với chặng đầu tiên tại khu di tích quốc gia Tân Trào (Tuyên Quang) và tiếp tục qua các tỉnh như Hà Nam, Thanh Hóa, Nghệ An. Một số chặng đáng chú ý bao gồm:
+
+Chặng 5 (Ngày 07/04/2025) Thanh Hóa – TP. Vinh (Nghệ An): Chặng đua dài 139 km, bắt đầu từ thành phố Thanh Hóa và kết thúc tại TP. Vinh, đi qua các địa điểm như Nghi Sơn, Tĩnh Gia, và Quỳnh Lưu, trước khi về đích tại Quảng trường Hồ Chí Minh, TP. Vinh vào khoảng 10h30.
+Chặng 6 (Ngày 08/04/2025) Thi đấu đồng đội tính giờ tại Cửa Lò: chặng đua 37km tại thị xã Cửa Lò, Nghệ An. Các đội sẽ thi đấu trong ba vòng, mỗi vòng dài 12,35km, với lộ trình qua các điểm như ngã ba Bình Minh và vòng xoay Phạm Nguyễn Du. Đây là chặng đua đòi hỏi sự phối hợp nhịp nhàng giữa các thành viên trong đội.
+Chặng 7 (Ngày 10/04/2025) TP. Vinh – TP. Đồng Hới (Quảng Bình): chặng đua dài 197,5km, vượt qua đèo Ngang, một thử thách lớn của cuộc đua. Sau khi leo đèo Ngang, các vận động viên sẽ tiếp tục đến TP. Đồng Hới, nơi kết thúc chặng đua vào khoảng 15h00. - <a href=http://www.adobe.com/go/adc_css_layouts</a>.</p>
+    <h2>hông Tin Về Cuộc Đua Xe Đạp Cúp Truyền Hình 2025</h2>
+    <p>Các chặng đua này không chỉ kiểm tra sức bền mà còn là cơ hội để các tay đua thể hiện tinh thần đồng đội và khả năng vượt qua khó khăn.
+
+Các công tác chuẩn bị khác cho cuộc đua xe đạp 
+Bên cạnh việc tổ chức các chặng đua, cuộc họp cũng đã rà soát các vấn đề liên quan đến công tác tuyên truyền, an ninh trật tự và cơ sở vật chất, nhằm bảo đảm tất cả các yếu tố này hoàn thành tốt trước khi cuộc đua xe đạp thể thao chính thức diễn ra. Các bên liên quan, bao gồm Ban tổ chức Trung ương và địa phương, sẽ tiếp tục phối hợp chặt chẽ để triển khai các kế hoạch này..</p>
+    <h3>Ý nghĩa đặc biệt của cuộc đua 2025</h3>
+    <p>Dự Đoán Những Cuộc Tranh Tài Kịch Tính Giải Đua Xe Đạp  Năm 2025
+Giải đua xe đạp Cúp Truyền hình Thành phố Hồ Chí Minh lần thứ 37 vào năm 2025 hứa hẹn sẽ mang đến những cuộc tranh tài kịch tính và hấp dẫn. Một trong những điểm nhấn lớn là sự cạnh tranh giữa các tay đua nội và ngoại.
+
+ Với sự tham gia của khoảng 150 vận động viên, trong đó có 10 tay đua quốc tế, cuộc đua sẽ trở thành một thử thách thực sự cho các tay đua Việt Nam. Đặc biệt, chặng đua đồng đội tính giờ tại Cửa Lò (Nghệ An) vào ngày 8/4, dài 37km, sẽ là cơ hội để các đội thể hiện sự phối hợp nhịp nhàng và chiến thuật tinh tế. . </p>
+    <p> Chặng đua thứ bảy, từ TP. Vinh đến TP. Đồng Hới, dài 197,5 km với đèo Ngang đầy thử thách, sẽ là cuộc đua quyết định cho những tay đua sở hữu sức bền và kỹ thuật leo đèo vượt trội. Những cuộc tranh tài gay cấn này sẽ là cơ hội để các tay đua khẳng định bản lĩnh và sức mạnh, đồng thời mang đến cho khán giả những giây phút hồi hộp và không thể nào quên.. </p>
+    <p></p>
+    <h4>Internet Explorer Conditional Comments</h4>
+    <p>These liquid layouts contain an Internet Explorer Conditional Comment (IECC) to correct two issues. </p>
+    <ol>
+      <li></li>
+      <li></li>
+    </ol>
+    <!-- end .content --></div>
+  <div class="sidebar2">
+    <h4>Ảnh</h4>
+    <img src="giai-dua-xe-dap-cup-truyen-hinh.jpg" width="150" height="200" />
+<p>(HIEC) - Sáng ngày 8/1, Ban Tổ chức kỷ niệm các ngày Lễ lớn Thành phố Hồ Chí Minh tổ chức Giải đua xe đạp phong trào Mừng Đảng - Mừng Xuân năm 2023 nhân dịp Tết cổ truyền Quý Mão năm 2023 và kỷ niệm 93 năm thành lập Đảng (3/2/1930 - 3/2/2023).
+Giải đua xe đạp phong trào Mừng Đảng - Mừng Xuân năm 2023 thu hút gần 300 vận động viên đến từ hơn 20 câu lạc bộ xe đạp của Thành phố Hồ Chí Minh tham gia. Theo điều lệ giải, các vận động viên thi đấu ở 02 nội dung Đồng đội tính giờ và Đồng hàng ở lứa tuổi 16 - 40 và 41 – 55, tranh giải cá nhân và đồng đội.
+ .</p>
+    <!-- end .sidebar2 --></div>
+  <div class="footer">
+    <p>tìm hiểu thêm.</p>
+    <!-- end .footer --></div>
+  <!-- end .container --></div>
+</body>
+</html>
